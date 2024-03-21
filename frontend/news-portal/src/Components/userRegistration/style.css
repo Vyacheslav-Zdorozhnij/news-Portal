@@ -1,0 +1,21 @@
+.regForm{
+    display: flex;
+    justify-content: center;
+}
+
+.elemForm{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.submit-btn{
+    background-color: #5858ec;
+    color: white;
+}
+
+input{
+    height: 40px;
+    width: 500px;
+    border-radius: 5px;
+}
