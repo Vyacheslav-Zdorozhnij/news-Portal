@@ -1,6 +1,11 @@
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUserRequest } from "../../redux/actions/action";
 import "./style.css";
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+  // const isLoading = useSelector((state) => state.isLoading);
+  // const error = useSelector((state) => state.error);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -16,36 +21,14 @@ const RegisterForm = () => {
     }));
   };
 
-  const submitHandler:MouseEventHandler<HTMLButtonElement> = async (e) => {
+  const submitHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     console.log("submitHandler >>", formData);
-
-    try {
-      const response = await fetch("http://localhost:4001/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log("Data submitted successfully");
-      } else {
-        console.error("Failed to submit data");
-      }
-    } catch (error) {
-      console.error("Error submitting data:", error);
-    }
+    dispatch(registerUserRequest(formData));
   };
 
   return (
-    <form
-      className="regForm"
-      //   action="http://localhost:4001/user/register"
-      //   method="POST"
-      //   onSubmit={submitHandler}
-    >
+    <form className="regForm">
       <div className="elemForm">
         <h2>Register</h2>
         <label>Username:</label>
@@ -79,6 +62,8 @@ const RegisterForm = () => {
           Submit
         </button>
       </div>
+      {/* {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>} */}
     </form>
   );
 };
