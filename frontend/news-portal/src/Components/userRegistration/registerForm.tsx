@@ -1,6 +1,6 @@
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUserRequest } from "../../redux/actions/action";
+import { REGISTER_USER_REQUEST } from "../../redux/actions/action";
 import "./style.css";
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const RegisterForm = () => {
   const submitHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     console.log("submitHandler >>", formData);
-    dispatch(registerUserRequest(formData));
+    // dispatch(registerUserRequest(formData));
   };
 
   return (
