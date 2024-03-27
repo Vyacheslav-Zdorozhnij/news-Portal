@@ -14,7 +14,7 @@ import { NewsModule } from './news/post.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env' ,
+      envFilePath: '.env',
     }),
     SequelizeModule.forRootAsync({
       useFactory: () => ({
