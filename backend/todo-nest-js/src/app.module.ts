@@ -2,17 +2,19 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 
-import { UserModule } from './user/user/user.module';
 import { User } from './models/userModel';
 import { Tag } from './models/tagModel';
 import { Post } from './models/postModel';
 import { TargetPost } from './models/tagsPostModel';
 
+import { UserModule } from './user/user/user.module';
+import { NewsModule } from './news/post.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: '.env' ,
     }),
     SequelizeModule.forRootAsync({
       useFactory: () => ({
@@ -27,6 +29,7 @@ import { TargetPost } from './models/tagsPostModel';
       }),
     }),
     UserModule,
+    NewsModule,
   ],
 })
 export class AppModule {}
