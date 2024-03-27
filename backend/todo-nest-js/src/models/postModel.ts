@@ -4,6 +4,7 @@ import {
   Table,
   Column,
   BelongsToMany,
+  BelongsTo,
   ForeignKey,
 } from 'sequelize-typescript';
 import { User } from './userModel';
@@ -19,6 +20,9 @@ export class Post extends Model<Post> {
     autoIncrement: true,
   })
   id: number;
+
+  @BelongsTo(() => User)
+  user: User;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

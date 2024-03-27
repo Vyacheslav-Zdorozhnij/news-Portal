@@ -4,6 +4,7 @@ import {
   Table,
   Column,
   BelongsToMany,
+  ForeignKey,
 } from 'sequelize-typescript';
 import { Post } from './postModel';
 import { TargetPost } from './tagsPostModel';
@@ -23,4 +24,8 @@ export class Tag extends Model<Tag> {
 
   @BelongsToMany(() => Post, () => TargetPost)
   posts: Post[];
+
+  @ForeignKey(() => TargetPost)
+  @Column({ type: DataType.INTEGER })
+  postId: number;
 }

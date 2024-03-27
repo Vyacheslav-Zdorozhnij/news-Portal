@@ -21,4 +21,5 @@ export class User extends Model<User> {
 
   @HasMany(() => Post)
   posts: [];
+  
 }
